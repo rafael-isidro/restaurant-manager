@@ -5,6 +5,14 @@ const getRestaurantRepository = async () => {
   return restaurantsList;
 };
 
+const postRestaurantRepository = async (restaurantData) => {
+  const registeredRestaurant = await knex('restaurants')
+    .insert(restaurantData)
+    .returning('*');
+  return registeredRestaurant[0];
+};
+
 module.exports = {
   getRestaurantRepository,
+  postRestaurantRepository,
 };
