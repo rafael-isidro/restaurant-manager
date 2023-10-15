@@ -1,5 +1,9 @@
-const { getRestaurantRepository } = require('./restaurant.repository');
+const {
+  getRestaurantRepository,
+  postRestaurantRepository,
+} = require('./restaurant.repository');
 
 module.exports = {
   getRestaurantRepository,
+  postRestaurantRepository,
 };

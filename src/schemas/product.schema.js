@@ -1,7 +1,6 @@
 const joi = require('joi');
 
 const productSchema = joi.object({
-  product_picture: joi.string().required().max(255),
   product_name: joi.string().required().max(255),
   product_value: joi.number().positive().required(),
   product_category: joi.string().required().max(255),
