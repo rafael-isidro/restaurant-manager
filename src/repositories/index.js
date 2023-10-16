@@ -1,9 +1,11 @@
 const {
-  getRestaurantRepository,
+  getRestaurantsRepository,
+  getRestaurantByIdRepository,
   postRestaurantRepository,
 } = require('./restaurant.repository');
 
 module.exports = {
-  getRestaurantRepository,
+  getRestaurantsRepository,
+  getRestaurantByIdRepository,
   postRestaurantRepository,
 };

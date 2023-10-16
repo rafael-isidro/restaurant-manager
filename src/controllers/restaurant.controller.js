@@ -1,8 +1,14 @@
-const { getRestaurantService, postRestaurantService } = require('../services');
+const { getRestaurantsService, getRestaurantByIdService, postRestaurantService } = require('../services');
 
-const getRestaurantController = async (req, res) => {
-  const restaurantsList = await getRestaurantService();
+const getRestaurantsController = async (req, res) => {
+  const restaurantsList = await getRestaurantsService();
   return res.status(200).json(restaurantsList);
+};
+
+const getRestaurantByIdController = async (req, res) => {
+  const { id } = req.params;
+  const restaurant = await getRestaurantByIdService(id);
+  return res.status(200).json(restaurant);
 };
 
 const postRestaurantController = async (req, res) => {
@@ -16,6 +22,7 @@ const postRestaurantController = async (req, res) => {
 };
 
 module.exports = {
-  getRestaurantController,
+  getRestaurantsController,
   postRestaurantController,
+  getRestaurantByIdController,
 };
