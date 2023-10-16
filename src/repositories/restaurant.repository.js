@@ -10,16 +10,16 @@ const getRestaurantByIdRepository = async (id) => {
   return restaurant;
 };
 
-const postRestaurantRepository = async (restaurantData) => {
+const postRestaurantRepository = async (data) => {
   const registeredRestaurant = await knex('restaurants')
-    .insert(restaurantData)
+    .insert(data)
     .returning('*');
   return registeredRestaurant[0];
 };
 
-const updateRestaurantRepository = async (restaurantData, id) => {
+const updateRestaurantRepository = async (data, id) => {
   const updatedRestaurant = await knex('restaurants')
-    .update(restaurantData)
+    .update(data)
     .where({ id })
     .returning('*');
 
