@@ -3,6 +3,7 @@ const {
   getRestaurantsRepository,
   getRestaurantByIdRepository,
   postRestaurantRepository,
+  updateRestaurantRepository,
 } = require('../repositories');
 const { sendPicture } = require('../utilities');
 
@@ -15,13 +16,13 @@ const getRestaurantsService = async () => {
 const getRestaurantByIdService = async (id) => {
   const restaurant = await getRestaurantByIdRepository(Number(id));
   return restaurant[0];
-}
+};
 
 const postRestaurantService = async (restaurantData, archive) => {
   const picture = archive;
   if (!picture) throw new Errors('The picture field is required', 400);
 
-  const path = `${restaurantData.restaurant_name.replace(' ', '_')}`;
+  const path = `${restaurantData.restaurant_name.replaceAll(' ', '_')}`;
   const registeredPicture = await sendPicture(
     path,
     picture.buffer,
@@ -46,8 +47,29 @@ const postRestaurantService = async (restaurantData, archive) => {
   return registeredRestaurant;
 };
 
+const updateRestaurantService = async (restaurantData, id, archive) => {
+  if (archive) {
+    let picture = archive;
+    const path = `${restaurantData.restaurant_name.replaceAll(' ', '_')}`;
+    const registeredPicture = await sendPicture(
+      path,
+      picture.buffer,
+      picture.mimetype
+    );
+
+    restaurantData.restaurant_picture = registeredPicture.url;
+  }
+  const updatedRestaurant = await updateRestaurantRepository(
+    restaurantData,
+    id
+  );
+
+  return updatedRestaurant;
+};
+
 module.exports = {
   getRestaurantsService,
   getRestaurantByIdService,
   postRestaurantService,
+  updateRestaurantService,
 };
