@@ -1,8 +1,13 @@
 const knex = require('../config/DB_conn');
 
-const getRestaurantRepository = async () => {
+const getRestaurantsRepository = async () => {
   const restaurantsList = await knex('restaurants');
   return restaurantsList;
+};
+
+const getRestaurantByIdRepository = async (id) => {
+  const restaurant = await knex('restaurants').where({ id });
+  return restaurant;
 };
 
 const postRestaurantRepository = async (restaurantData) => {
@@ -13,6 +18,7 @@ const postRestaurantRepository = async (restaurantData) => {
 };
 
 module.exports = {
-  getRestaurantRepository,
+  getRestaurantsRepository,
+  getRestaurantByIdRepository,
   postRestaurantRepository,
 };

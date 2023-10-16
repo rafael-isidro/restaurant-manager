@@ -1,15 +1,21 @@
 const { Errors } = require('../errors');
 const {
-  getRestaurantRepository,
+  getRestaurantsRepository,
+  getRestaurantByIdRepository,
   postRestaurantRepository,
 } = require('../repositories');
 const { sendPicture } = require('../utilities');
 
-const getRestaurantService = async () => {
-  const restaurantsList = await getRestaurantRepository();
+const getRestaurantsService = async () => {
+  const restaurantsList = await getRestaurantsRepository();
 
   return restaurantsList;
 };
+
+const getRestaurantByIdService = async (id) => {
+  const restaurant = await getRestaurantByIdRepository(Number(id));
+  return restaurant[0];
+}
 
 const postRestaurantService = async (restaurantData, archive) => {
   const picture = archive;
@@ -41,6 +47,7 @@ const postRestaurantService = async (restaurantData, archive) => {
 };
 
 module.exports = {
-  getRestaurantService,
+  getRestaurantsService,
+  getRestaurantByIdService,
   postRestaurantService,
 };

@@ -1,9 +1,11 @@
 const {
-  getRestaurantController,
+  getRestaurantsController,
+  getRestaurantByIdController,
   postRestaurantController,
 } = require('./restaurant.controller');
 
 module.exports = {
-  getRestaurantController,
+  getRestaurantByIdController,
+  getRestaurantsController,
   postRestaurantController,
 };

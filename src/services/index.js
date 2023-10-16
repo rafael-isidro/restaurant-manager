@@ -1,9 +1,11 @@
 const {
-  getRestaurantService,
+  getRestaurantsService,
+  getRestaurantByIdService,
   postRestaurantService,
 } = require('./restaurant.service');
 
 module.exports = {
-  getRestaurantService,
+  getRestaurantsService,
+  getRestaurantByIdService,
   postRestaurantService,
 };
