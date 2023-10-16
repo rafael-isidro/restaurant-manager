@@ -17,8 +17,17 @@ const postRestaurantRepository = async (restaurantData) => {
   return registeredRestaurant[0];
 };
 
+const updateRestaurantRepository = async (restaurantData, id) => {
+  const updatedRestaurant = await knex('restaurants')
+    .update(restaurantData)
+    .where({ id })
+    .returning('*');
+
+  return updatedRestaurant[0];
+};
 module.exports = {
   getRestaurantsRepository,
   getRestaurantByIdRepository,
   postRestaurantRepository,
+  updateRestaurantRepository,
 };
