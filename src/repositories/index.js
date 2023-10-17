@@ -10,6 +10,7 @@ const {
   getProductsRepository,
   postProductRepository,
   updateProductRepository,
+  deleteProductRepository,
 } = require('./product.repository');
 
 module.exports = {
@@ -22,4 +23,5 @@ module.exports = {
   getProductsRepository,
   postProductRepository,
   updateProductRepository,
+  deleteProductRepository,
 };

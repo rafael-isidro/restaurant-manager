@@ -11,6 +11,7 @@ const {
   getProductsService,
   postProductService,
   updateProductService,
+  deleteProductService,
 } = require('./product.service');
 
 module.exports = {
@@ -23,4 +24,5 @@ module.exports = {
   getProductsService,
   postProductService,
   updateProductService,
+  deleteProductService,
 };

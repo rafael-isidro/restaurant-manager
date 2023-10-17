@@ -25,7 +25,16 @@ const updateProductRepository = async (data, productId) => {
     .where({ id: productId })
     .returning('*');
 
-    return updatedProduct;
+  return updatedProduct;
+};
+
+const deleteProductRepository = async (productId) => {
+  const deletedProduct = await knex('products')
+    .where({ id: productId })
+    .delete()
+    .returning('*');
+
+  return deletedProduct;
 };
 
 module.exports = {
@@ -33,4 +42,5 @@ module.exports = {
   getProductsRepository,
   postProductRepository,
   updateProductRepository,
+  deleteProductRepository,
 };
