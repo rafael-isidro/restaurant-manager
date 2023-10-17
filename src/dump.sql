@@ -1,5 +1,4 @@
 drop table if exists products;
-
 drop table if exists restaurants;
 
 create table if not exists restaurants(
