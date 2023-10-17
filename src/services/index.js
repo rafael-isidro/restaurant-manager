@@ -3,6 +3,7 @@ const {
   getRestaurantByIdService,
   postRestaurantService,
   updateRestaurantService,
+  deleteRestaurantService,
 } = require('./restaurant.service');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   getRestaurantByIdService,
   postRestaurantService,
   updateRestaurantService,
+  deleteRestaurantService,
 };

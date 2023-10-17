@@ -3,6 +3,7 @@ const {
   getRestaurantByIdController,
   postRestaurantController,
   updateRestaurantController,
+  deleteRestaurantController,
 } = require('../controllers');
 const {
   validateRequestBody,
@@ -30,5 +31,7 @@ restaurantRoutes.put(
   validateRequestBody(restaurantSchema),
   updateRestaurantController
 );
+
+restaurantRoutes.delete('/:id', verifyId, deleteRestaurantController);
 
 module.exports = restaurantRoutes;

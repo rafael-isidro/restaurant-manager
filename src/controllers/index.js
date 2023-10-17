@@ -3,6 +3,7 @@ const {
   getRestaurantByIdController,
   postRestaurantController,
   updateRestaurantController,
+  deleteRestaurantController,
 } = require('./restaurant.controller');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   getRestaurantsController,
   postRestaurantController,
   updateRestaurantController,
+  deleteRestaurantController,
 };

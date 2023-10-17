@@ -3,6 +3,7 @@ const {
   getRestaurantByIdService,
   postRestaurantService,
   updateRestaurantService,
+  deleteRestaurantService,
 } = require('../services');
 
 const getRestaurantsController = async (req, res) => {
@@ -39,9 +40,18 @@ const updateRestaurantController = async (req, res) => {
   return res.status(200).json(updatedRestaurant);
 };
 
+const deleteRestaurantController = async (req, res) => {
+  const { id } = req.params;
+
+  const deletedRestaurant = await deleteRestaurantService(id);
+
+  return res.status(200).json(deletedRestaurant);
+};
+
 module.exports = {
   getRestaurantsController,
   postRestaurantController,
   getRestaurantByIdController,
   updateRestaurantController,
+  deleteRestaurantController,
 };

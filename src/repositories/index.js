@@ -3,6 +3,7 @@ const {
   getRestaurantByIdRepository,
   postRestaurantRepository,
   updateRestaurantRepository,
+  deleteRestaurantRepository,
 } = require('./restaurant.repository');
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   getRestaurantByIdRepository,
   postRestaurantRepository,
   updateRestaurantRepository,
+  deleteRestaurantRepository,
 };
