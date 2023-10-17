@@ -1,16 +1,33 @@
-const { sendPicture } = require(".");
+const { sendPicture } = require('./backblaze');
 
-const createPictureData = async (restaurantData, picture) => {
-    const path = `${restaurantData.restaurant_name.replaceAll(' ', '_')}`;
-    const registeredPicture = await sendPicture(
-      path,
-      picture.buffer,
-      picture.mimetype
-    );
-  
-    restaurantData.restaurant_picture = registeredPicture.url;
+const createRestaurantPictureData = async (restaurantData, picture) => {
+  const path = `restaurant_${restaurantData.restaurant_name
+    .replaceAll(' ', '_')
+    .toLowerCase()}`;
+  const registeredPicture = await sendPicture(
+    path,
+    picture.buffer,
+    picture.mimetype
+  );
 
-    return restaurantData;
+  restaurantData.restaurant_picture = registeredPicture.url;
+
+  return restaurantData;
 };
 
-module.exports = createPictureData;
+const createProductPictureData = async (productData, picture) => {
+  const path = `product_${productData.product_name
+    .replaceAll(' ', '_')
+    .toLowerCase()}`;
+  const registeredPicture = await sendPicture(
+    path,
+    picture.buffer,
+    picture.mimetype
+  );
+
+  productData.product_picture = registeredPicture.url;
+
+  return productData;
+};
+
+module.exports = { createRestaurantPictureData, createProductPictureData };
