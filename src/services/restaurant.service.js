@@ -1,5 +1,4 @@
 const { Errors } = require('../errors');
-const { createPictureData } = require('../middlewares');
 const {
   getRestaurantsRepository,
   getRestaurantByIdRepository,
@@ -7,6 +6,7 @@ const {
   updateRestaurantRepository,
   deleteRestaurantRepository,
 } = require('../repositories');
+const { createRestaurantPictureData } = require('../utilities');
 
 const getRestaurantsService = async () => {
   const restaurantsList = await getRestaurantsRepository();
@@ -23,7 +23,7 @@ const getRestaurantByIdService = async (id) => {
 const postRestaurantService = async (restaurantData, archive) => {
   const picture = archive;
   if (!picture) throw new Errors('The picture field is required', 400);
-  const data = await createPictureData(restaurantData, picture);
+  const data = await createRestaurantPictureData(restaurantData, picture);
   const registeredRestaurant = await postRestaurantRepository(data);
 
   return registeredRestaurant[0];
@@ -32,7 +32,7 @@ const postRestaurantService = async (restaurantData, archive) => {
 const updateRestaurantService = async (restaurantData, id, archive) => {
   if (archive) {
     const picture = archive;
-    const data = await createPictureData(restaurantData, picture);
+    const data = await createRestaurantPictureData(restaurantData, picture);
     const updatedRestaurant = await updateRestaurantRepository(
       data,
       Number(id)

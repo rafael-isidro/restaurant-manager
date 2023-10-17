@@ -8,6 +8,7 @@ const {
 const {
   getProductByIdRepository,
   getProductsRepository,
+  postProductRepository,
 } = require('./product.repository');
 
 module.exports = {
@@ -18,4 +19,5 @@ module.exports = {
   deleteRestaurantRepository,
   getProductByIdRepository,
   getProductsRepository,
+  postProductRepository,
 };

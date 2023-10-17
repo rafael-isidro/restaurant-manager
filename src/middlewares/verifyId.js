@@ -9,12 +9,19 @@ const verifyId = async (req, res, next) => {
   const basePath = req.baseUrl + req.route.path;
 
   if (isNaN(id) || Number(id) === 0) {
-    throw new Errors('Id entered in the parameter is invalid', 400);
+    throw new Errors('Restaurant id inserted in the parameter is invalid', 400);
   }
 
   if (
-    basePath === '/restaurant/:id' ||
-    basePath === '/restaurant/:id/product/:productId'
+    productId !== undefined &&
+    (isNaN(productId) || Number(productId) === 0)
+  ) {
+    throw new Errors('Product id inserted in the parameter is invalid', 400);
+  }
+
+  if (
+    basePath === '/restaurant/:id/product/:productId' ||
+    basePath === '/restaurant/:id'
   ) {
     const restaurantFound = await getRestaurantByIdRepository(Number(id));
     if (!restaurantFound || restaurantFound.length < 1) {

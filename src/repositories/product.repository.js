@@ -6,12 +6,21 @@ const getProductByIdRepository = async (productId) => {
   return product;
 };
 const getProductsRepository = async (id) => {
-  const product = await knex('products').where({ restaurant_id: id });
+  const productsList = await knex('products').where({ restaurant_id: id });
 
-  return product;
+  return productsList;
+};
+
+const postProductRepository = async (data, id) => {
+  const registeredProduct = await knex('products')
+    .insert({ ...data, restaurant_id: id })
+    .returning('*');
+
+  return registeredProduct;
 };
 
 module.exports = {
   getProductByIdRepository,
   getProductsRepository,
+  postProductRepository,
 };
