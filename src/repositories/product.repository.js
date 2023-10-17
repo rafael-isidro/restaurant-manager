@@ -19,8 +19,18 @@ const postProductRepository = async (data, id) => {
   return registeredProduct;
 };
 
+const updateProductRepository = async (data, productId) => {
+  const updatedProduct = await knex('products')
+    .update(data)
+    .where({ id: productId })
+    .returning('*');
+
+    return updatedProduct;
+};
+
 module.exports = {
   getProductByIdRepository,
   getProductsRepository,
   postProductRepository,
+  updateProductRepository,
 };
