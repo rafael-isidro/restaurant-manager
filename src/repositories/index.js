@@ -5,6 +5,10 @@ const {
   updateRestaurantRepository,
   deleteRestaurantRepository,
 } = require('./restaurant.repository');
+const {
+  getProductByIdRepository,
+  getProductsRepository,
+} = require('./product.repository');
 
 module.exports = {
   getRestaurantsRepository,
@@ -12,4 +16,6 @@ module.exports = {
   postRestaurantRepository,
   updateRestaurantRepository,
   deleteRestaurantRepository,
+  getProductByIdRepository,
+  getProductsRepository,
 };

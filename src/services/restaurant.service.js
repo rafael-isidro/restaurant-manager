@@ -33,26 +33,32 @@ const updateRestaurantService = async (restaurantData, id, archive) => {
   if (archive) {
     const picture = archive;
     const data = await createPictureData(restaurantData, picture);
-    const updatedRestaurant = await updateRestaurantRepository(data, Number(id));
+    const updatedRestaurant = await updateRestaurantRepository(
+      data,
+      Number(id)
+    );
 
     return updatedRestaurant;
   }
 
-  const updatedRestaurant = await updateRestaurantRepository(restaurantData, Number(id));
+  const updatedRestaurant = await updateRestaurantRepository(
+    restaurantData,
+    Number(id)
+  );
 
   return updatedRestaurant[0];
 };
 
 const deleteRestaurantService = async (id) => {
-  const deletedRestaurant =  await deleteRestaurantRepository(Number(id));
+  const deletedRestaurant = await deleteRestaurantRepository(Number(id));
 
   return deletedRestaurant[0];
-}
+};
 
 module.exports = {
   getRestaurantsService,
   getRestaurantByIdService,
   postRestaurantService,
   updateRestaurantService,
-  deleteRestaurantService
+  deleteRestaurantService,
 };
