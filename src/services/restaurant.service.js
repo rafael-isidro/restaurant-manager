@@ -5,6 +5,7 @@ const {
   getRestaurantByIdRepository,
   postRestaurantRepository,
   updateRestaurantRepository,
+  deleteRestaurantRepository,
 } = require('../repositories');
 
 const getRestaurantsService = async () => {
@@ -25,26 +26,33 @@ const postRestaurantService = async (restaurantData, archive) => {
   const data = await createPictureData(restaurantData, picture);
   const registeredRestaurant = await postRestaurantRepository(data);
 
-  return registeredRestaurant;
+  return registeredRestaurant[0];
 };
 
 const updateRestaurantService = async (restaurantData, id, archive) => {
   if (archive) {
     const picture = archive;
     const data = await createPictureData(restaurantData, picture);
-    const updatedRestaurant = await updateRestaurantRepository(data, id);
+    const updatedRestaurant = await updateRestaurantRepository(data, Number(id));
 
     return updatedRestaurant;
   }
 
-  const updatedRestaurant = await updateRestaurantRepository(restaurantData, id);
+  const updatedRestaurant = await updateRestaurantRepository(restaurantData, Number(id));
 
-  return updatedRestaurant;
+  return updatedRestaurant[0];
 };
+
+const deleteRestaurantService = async (id) => {
+  const deletedRestaurant =  await deleteRestaurantRepository(Number(id));
+
+  return deletedRestaurant[0];
+}
 
 module.exports = {
   getRestaurantsService,
   getRestaurantByIdService,
   postRestaurantService,
   updateRestaurantService,
+  deleteRestaurantService
 };

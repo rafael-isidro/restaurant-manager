@@ -14,7 +14,7 @@ const postRestaurantRepository = async (data) => {
   const registeredRestaurant = await knex('restaurants')
     .insert(data)
     .returning('*');
-  return registeredRestaurant[0];
+  return registeredRestaurant;
 };
 
 const updateRestaurantRepository = async (data, id) => {
@@ -23,11 +23,21 @@ const updateRestaurantRepository = async (data, id) => {
     .where({ id })
     .returning('*');
 
-  return updatedRestaurant[0];
+  return updatedRestaurant;
 };
+
+const deleteRestaurantRepository = async (id) => {
+  const deletedRestaurant = await knex('restaurants')
+    .delete()
+    .where({ id })
+    .returning('*');
+  return deletedRestaurant;
+};
+
 module.exports = {
   getRestaurantsRepository,
   getRestaurantByIdRepository,
   postRestaurantRepository,
   updateRestaurantRepository,
+  deleteRestaurantRepository,
 };
