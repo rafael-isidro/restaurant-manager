@@ -10,6 +10,7 @@ const {
   getProductByIdService,
   getProductsService,
   postProductService,
+  updateProductService,
 } = require('./product.service');
 
 module.exports = {
@@ -21,4 +22,5 @@ module.exports = {
   getProductByIdService,
   getProductsService,
   postProductService,
+  updateProductService,
 };

@@ -2,6 +2,7 @@ const {
   getProductByIdController,
   getProductsController,
   postProductController,
+  updateProductController,
 } = require('../controllers');
 const {
   verifyId,
@@ -25,6 +26,13 @@ productRoutes.post(
   verifyId,
   validateRequestBody(productSchema),
   postProductController
+);
+productRoutes.put(
+  '/:id/product/:productId',
+  multer.single('picture'),
+  verifyId,
+  validateRequestBody(productSchema),
+  updateProductController
 );
 
 module.exports = productRoutes;

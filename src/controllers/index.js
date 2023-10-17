@@ -9,6 +9,7 @@ const {
   getProductByIdController,
   getProductsController,
   postProductController,
+  updateProductController,
 } = require('./product.controller');
 
 module.exports = {
@@ -20,4 +21,5 @@ module.exports = {
   getProductByIdController,
   getProductsController,
   postProductController,
+  updateProductController,
 };
