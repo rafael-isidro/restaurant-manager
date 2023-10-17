@@ -2,11 +2,13 @@ const knex = require('../config/DB_conn');
 
 const getRestaurantsRepository = async () => {
   const restaurantsList = await knex('restaurants');
+
   return restaurantsList;
 };
 
 const getRestaurantByIdRepository = async (id) => {
   const restaurant = await knex('restaurants').where({ id });
+
   return restaurant;
 };
 
@@ -14,6 +16,7 @@ const postRestaurantRepository = async (data) => {
   const registeredRestaurant = await knex('restaurants')
     .insert(data)
     .returning('*');
+
   return registeredRestaurant;
 };
 
@@ -31,6 +34,7 @@ const deleteRestaurantRepository = async (id) => {
     .delete()
     .where({ id })
     .returning('*');
+
   return deletedRestaurant;
 };
 

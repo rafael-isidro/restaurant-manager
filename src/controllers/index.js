@@ -5,6 +5,10 @@ const {
   updateRestaurantController,
   deleteRestaurantController,
 } = require('./restaurant.controller');
+const {
+  getProductByIdController,
+  getProductsController,
+} = require('./product.controller');
 
 module.exports = {
   getRestaurantByIdController,
@@ -12,4 +16,6 @@ module.exports = {
   postRestaurantController,
   updateRestaurantController,
   deleteRestaurantController,
+  getProductByIdController,
+  getProductsController,
 };
