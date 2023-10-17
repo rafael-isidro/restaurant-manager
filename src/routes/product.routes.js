@@ -3,6 +3,7 @@ const {
   getProductsController,
   postProductController,
   updateProductController,
+  deleteProductController,
 } = require('../controllers');
 const {
   verifyId,
@@ -33,6 +34,11 @@ productRoutes.put(
   verifyId,
   validateRequestBody(productSchema),
   updateProductController
+);
+productRoutes.delete(
+  '/:id/product/:productId',
+  verifyId,
+  deleteProductController
 );
 
 module.exports = productRoutes;

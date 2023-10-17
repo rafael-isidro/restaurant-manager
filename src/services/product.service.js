@@ -5,6 +5,7 @@ const {
   getProductsRepository,
   postProductRepository,
   updateProductRepository,
+  deleteProductRepository,
 } = require('../repositories');
 
 const getProductByIdService = async (productId) => {
@@ -29,15 +30,22 @@ const postProductService = async (productData, id, archive) => {
 
 const updateProductService = async (productData, archive, productId) => {
   const picture = archive;
-  const data = await createProductPictureData(productData, picture)
+  const data = await createProductPictureData(productData, picture);
   const updatedProduct = await updateProductRepository(data, Number(productId));
 
   return updatedProduct[0];
-}
+};
+
+const deleteProductService = async (productId) => {
+  const deletedProduct = await deleteProductRepository(Number(productId));
+  
+  return deletedProduct[0];
+};
 
 module.exports = {
   getProductByIdService,
   getProductsService,
   postProductService,
   updateProductService,
+  deleteProductService,
 };
